@@ -17,13 +17,30 @@
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Blast Off!</a></p>
     </div>
 
-    <!-- Craigslist Listings -->
     <div class="row" id="craiglist-listings">
       <div class="col-md-12">
-        <h4 class="heading">{{listings.news_title}} {{listings.news_p}}</h4>
-        <small>{{listings.news_p}}</small>
+        <h4 class="heading">Headline: {{listings.news_title}}</h4>
+        <small>Paragraph: {{listings.news_p}}</small>
       </div>
     </div>
+    <p>Image of the Day</p>
+    <img src="{{listings.image_link_url}}">
+    <p>Mars Facts</p>
+    {{listings.mars_table | safe }}
+    <p>Mars Hemispheres</p>
+    
+    {% for hemisphere in listings.hemi_dict %}
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img src="{{hemisphere.url}}" alt="mars image">
+            <div class="caption">
+              <h3>{{hemisphere.title}}</h3>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+
 
   </div>
 </body>
